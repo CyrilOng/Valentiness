@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Heart For You ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: radial-gradient(circle at top, #ff99cc, #cc0066, #330033);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Dancing Script', cursive;
+    color: white;
+}
+
+.card {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    padding: 30px;
+    border-radius: 25px;
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(255, 0, 102, 0.6);
+    z-index: 2;
+    animation: fadeIn 2s ease-in-out;
+}
+
+h1 {
+    margin-bottom: 15px;
+    font-size: 1.8em;
+}
+
+#memory {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: opacity 0.5s ease;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
+}
+
+#letter {
+    min-height: 80px;
+    font-size: 1.05em;
+    margin-top: 10px;
+    letter-spacing: 3px;
+
+}
+
+#finalMessage {
+    
+    display: none;
+    margin-top: 15px;
+    font-size: 1.4em;
+    font-family: 'Great Vibes', cursive;
+    animation: fadeIn 2s ease-in-out;
+    letter-spacing: 1.5px; 
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background: #ff3385;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.1em;  
+    letter-spacing: 1px; 
+}
+
+button:hover {
+    background: #ff0066;
+    transform: scale(1.1);
+}
+
+.heart {
+    position: absolute;
+    bottom: -20px;
+    color: #ff4da6;
+    font-size: 20px;
+    animation: floatUp linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 3;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Happy Valentines Babi Ko 💖</h1>
+
+    <img id="memory" src="image.JPG" onclick="changePhoto()">
+
+    <p id="letter"></p>
+
+    <button onclick="showFinal()"> Basahin moto baka masapak ko olo mo hehe 💌</button>
+
+    <div id="finalMessage">
+       Happy Valentines Mahal! 
+       Hello babi ko, Salamat sa lahat ng sakripisyo na ginagawa mo for us.
+       Salamat dahil anjan ka palagi kahit anong mangyari.
+       Wag kang magsasawa saakin ha? mahal na mahal kita.
+       Babawi ako wag kang mag alala ha? Andito ako palagi.
+       Mag boboxing pa tayo maraming beses.
+       Ikaw at ikaw.
+       Iloveyousomuchybabiko!🌹💐🌷❤️
+
+    </div>
+</div>
+
+<script>
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    heart.style.animationDuration = Math.random() * 4 + 4 + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 8000);
+}
+
+setInterval(createHeart, 200);
+
+
+const text ="If not for you, my sky would fall. Rain would gather, too. Without your love, I'd be nowhere at all. I'd be lost, if not for you.";
+let i = 0;
+
+function typeWriter() {
+    if (i < text.length) {
+        document.getElementById("letter").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 35);
+    }
+}
+
+typeWriter();
+
+const photos = ["image1.jpg","image2.jpg", "image3.jpg", "image4.jpg", "image5.jpg","image6.jpg"];
+let index = 0;
+
+function changePhoto() {
+    const img = document.getElementById("memory");
+    img.style.opacity = 0;
+
+    setTimeout(() => {
+        index = (index + 1) % photos.length;
+        img.src = photos[index];
+        img.style.opacity = 1;
+    }, 400);
+}
+
+/* Final Message */
+function showFinal() {
+    document.getElementById("finalMessage").style.display = "block";
+}
+
+</script>
+
+</body>
+</html>
